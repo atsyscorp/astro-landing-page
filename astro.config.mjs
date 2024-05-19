@@ -1,10 +1,12 @@
 import { defineConfig } from 'astro/config';
-
 import tailwind from "@astrojs/tailwind";
+
+import relativeLinks from "astro-relative-links";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind()],
+  base: '',
+  integrations: [tailwind(), relativeLinks()],
   site: 'https://atsyscorp.github.io',
-  base : '/astro-landing-page'
+  trailingSlash: "never"
 });
