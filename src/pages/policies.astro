@@ -1,0 +1,23 @@
+---
+import Layout from '../components/Layout.astro';
+const currentLang = "es";
+---
+<Layout
+  pageTitle="Policies - ATSYS"
+  pageDescription="Discover the policies of our ATSYS website, aimed at data management, website privacy and quality. Come in and find out!"
+  lang={currentLang}
+>
+<div class="container">
+    <div class="blog-header bg-black flex flex-col content-center justify-center h-[250px]">
+        <h1 class="pt-11 text-white text-center text-5xl">Website policies</h1>
+    </div>
+    <div class="bg-ciblue py-11 px-40 text-white">
+        <p class="mb-5">At ATSYS we take our policies very seriously, which you can consult here, so that the experience both in navigation and in the provision of services is appropriate.</p>
+
+        <ul>
+            <li><a href="/privacy-policy">Privacy policy</a></li>
+            <li><a href="/quality-policy">Quality policy</a></li>
+        </ul>
+    </div>
+</div>
+</Layout>

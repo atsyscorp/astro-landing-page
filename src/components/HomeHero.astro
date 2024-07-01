@@ -1,0 +1,37 @@
+---
+interface Props {
+    title? : string
+    textsList? : string
+}
+
+import '../styles/styles.css';
+const { title = 'Default title', textsList = 'Default,words' } = Astro.props
+---
+<section class="overflow-y-hidden w-100 h-screen relative bg-hero">
+    <div class="absolute w-full h-full">
+        <div class="at-home-symbol">
+            <svg width="500" height="500" viewBox="0 0 600 672" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path id="Path-copy" fill="#ffffff" stroke="none" d="M -0 662.824097 C 101.251282 442.560974 202.304947 223.381653 305.296204 0 C 404.219574 223.732117 501.516632 443.786072 600 666.523071 C 592.055603 666.523071 586.515808 666.532593 580.976013 666.521606 C 544.327454 666.449402 507.675079 666.064758 471.032959 666.517029 C 462.008423 666.628174 457.996063 663.702515 454.545258 655.323425 C 405.087616 535.234131 355.206207 415.319397 305.376129 295.383698 C 304.727478 293.822388 303.421539 292.534149 301.260162 289.471771 C 245.664856 415.944366 190.645721 541.106323 135.553955 666.433411 C 91.344307 666.433411 47.552944 666.455322 3.762109 666.327148 C 2.439881 666.323364 1.122195 664.749634 -0 662.824097 Z"/></svg>
+        </div>
+    </div>
+    <div class="relative text-center ">
+        <div class="h-screen flex-col justify-center content-center">
+            <h1 class="text-4xl font-bold text-white">{title}</h1>
+            <p id="texts" class="text-white text-7xl"></p>
+        </div>
+    </div>
+</section>
+<script src="/js/TextScramble.js" is:inline></script>
+<script define:vars={{textsList}} is:inline>
+    const el = document.getElementById('texts');
+    const fx = new TextScramble(el);
+    const textsValues = textsList.split(',');
+    let counter = 0
+    const next = () => {
+        fx.setText(textsValues[counter]).then(() => {
+            setTimeout(next, 2000)
+        })
+        counter = (counter + 1) % textsValues.length
+    }
+
+    next()
+</script>

@@ -1,0 +1,15 @@
+---
+interface Props {
+    title? : string
+    customers? : string
+}
+const { title = 'Default', customers = 'Default' } = Astro.props;
+import HomeCustomerSlider from './HomeCustomerSlider.jsx';
+---
+<section class="bg-black py-20">
+    <div class="text-white text-center">{title}</div>
+    <h3 class="text-4xl text-white text-center mb-4">{customers}</h3>
+    <div class="container m-auto pt-11">
+        <HomeCustomerSlider client:only="react" />
+    </div>
+</section>

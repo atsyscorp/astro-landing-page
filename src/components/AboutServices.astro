@@ -1,0 +1,153 @@
+---
+interface Props {
+    lang? : string
+}
+const { lang = 'es' } = Astro.props;
+const props = Astro.props;
+const services = {
+
+    'es' : [
+        {
+            title: 'Sitios informativos',
+            description: 'Eleva tu visibilidad en línea a través de nuestros sitios web personalizados. Comenzando con exhibiciones dinámicas de productos y concluyendo con narrativas corporativas convincentes, creamos entornos digitales que resuenan con tu público objetivo.',
+            features : [
+                'Creación de identidad visual única.',
+                'Conexión eficiente con tus redes sociales.',
+                'Enfoques para maximizar el tráfico web.',
+                'Hospedaje web y registro de dominio.'
+            ],
+            bgClass : 'bg-midnight'
+        },
+        {
+            title: 'Sitios corporativos',
+            description : 'Dale vida a tu marca en Internet con sitios web personalizados. Creamos tu hogar digital: un espacio que cuenta tu historia, muestra tus productos y conecta con tu gente. Es el punto de encuentro perfecto para clientes, inversores y futuros miembros del equipo.',
+            features : [
+                'Características a la medida.',
+                'Sistema de acceso protegido.',
+                'Conexión con apps externas.',
+                'Asistencia y cuidado constante.'
+            ],
+            bgClass : 'bg-tahiti'
+        },
+        {
+            title : 'E-commerce',
+            description : 'Amplía tu alcance de mercado con nuestras plataformas digitales mejoradas. Desde una navegación fluida hasta un proceso de pago eficaz, diseñamos portales en línea responsivos que inspiran confianza y agilizan tus transacciones.',
+            features : [
+                'Conexión segura con pasarelas de cobro.',
+                'Control de inventario y productos.',
+                'Plataforma de gestión de pedidos.',
+                'Enlace con servicios de envío.'
+            ],
+            bgClass : 'bg-bubble-gum'
+        },
+        {
+            title : 'Apps web',
+            description : 'Mejora tu negocio con herramientas en línea de vanguardia. Ofrecemos ventajas virtuales: desde interactuar con seguidores en redes hasta procesar información rápidamente. Nos aseguramos de que tu plataforma tenga un aspecto elegante y un buen rendimiento.',
+            features : [
+                'Desarrollo personalizado a tus necesidades.',
+                'Integración fluida con servicios externos.',
+                'Diseño flexible que crece contigo.',
+                'Base sólida para un rendimiento óptimo.'
+            ],
+            bgClass : 'bg-ciorange'
+        }
+    ],
+
+    'en' : [
+        {
+            title: 'Informative websites',
+            description: 'Elevate your online visibility via our tailored websites. Starting with dynamic product showcases and concluding with compelling corporate narratives, we craft digital environments that resonate with your intended demographic.',
+            features: [
+                'Creation of unique visual identity.',
+                'Efficient connection with your social media.',
+                'Approaches to maximize the web traffic.',
+                'Web address and hosting services.'
+            ],
+            bgClass : 'bg-metal'
+        },
+        {
+            title: 'Corporate websites',
+            description: 'Bring your brand to life on the internet with tailored websites. We build your digital home: a space that tells your story, showcases your products, and connects with your people. It\'s the perfect meeting point for customers, investors, and future team members.',
+            features: [
+                'Customized features.',
+                'Secure access system.',
+                'Connection with external apps.',
+                'Constant assistance and care.'
+            ],
+            bgClass : 'bg-ciorange'
+        },
+        {
+            title: 'E-commerce',
+            description: 'Expand your market reach with our enhanced digital platforms. From seamless browsing to robust checkout, we design responsive online portals that inspire confidence and streamline transactions.',
+            features: [
+                'Secure connection with payment gateways.',
+                'Inventory and product control.',
+                'Order management platform.',
+                'Link with shipping services.'
+            ],
+            bgClass : 'bg-cipink'
+        },
+        {
+            title: 'Web Apps',
+            description: 'Elevate your venture with cutting-edge online tools. We offer virtual advantages: engaging followers on networks to processing information swiftly. We ensure your platform appears sleek and performs well.',
+            features: [
+                'Custom development for your needs.',
+                'Seamless integration with external services.',
+                'Flexible design that grows with you.',
+                'Solid foundation for optimal performance.'
+            ],
+            bgClass : 'bg-midnight'
+        }
+    ]
+
+}
+---
+<section class="py-11 px-30 bg-black text-white flex flex-col w-full gap-11 about-service-block">
+    <h2 class="text-center text-4xl mb-5">{lang == 'es' ? '¿Qué hacemos?' : 'What we do?'}</h2>
+    <div class="flex flex-wrap flex-row gap-11">
+        {
+            services[lang].map((i: { bgClass: string, title: string, description: string, features: string[] }) => (
+                <div class={['h-max', 'rounded-2xl', 'px-18 py-11', 'flex-1', 'h-max', i.bgClass].join(' ')}>
+                    <div class="flex flex-col gap-5">
+                        <div class="service-title text-5xl"><p>{i.title}</p></div>
+                        <div class="service-description">{i.description}</div>
+                        <div class="service-features">
+                            {
+                                i.features.map((f:string) => (
+                                    <div class="service-feature">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 256 256" {...props} style={{display:'inline'}}><path fill="currentColor" d="M128 20a108 108 0 1 0 108 108A108.12 108.12 0 0 0 128 20m0 192a84 84 0 1 1 84-84a84.09 84.09 0 0 1-84 84m48.49-92.49a12 12 0 0 1 0 17l-32 32a12 12 0 1 1-17-17L139 140H88a12 12 0 0 1 0-24h51l-11.52-11.51a12 12 0 1 1 17-17Z" /></svg>
+                                        {f}</div>
+                                ))
+                            }
+                        </div>
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+    <script>    
+        const aboutServScrolling = () => {
+            const aboutContent = document.querySelector(".about-service-block");
+            const aboutSpan = aboutContent.querySelectorAll('.service-title');
+            aboutSpan.forEach(item => {
+                setTimeout(() => {
+                    const itemElement = item as HTMLElement;
+                    itemElement.style.cssText = 'opacity: 1; transform: translateY(0%) translateZ(0px);';
+                }, Array.from(aboutSpan).indexOf(item) * 100);
+            });
+        }
+        aboutServScrolling();
+        const aboutContent = document.querySelector(".about-service-block");
+        const aboutSpan = document.querySelectorAll('.service-title');
+
+        window.addEventListener('scroll', function() {
+            if (aboutContent.getBoundingClientRect().top < window.innerHeight && aboutContent.getBoundingClientRect().bottom > 0) {
+                aboutServScrolling();
+            } else {
+                aboutSpan.forEach(item => {
+                    item.removeAttribute('style');
+                });
+            }
+        });
+    </script>
+</section>

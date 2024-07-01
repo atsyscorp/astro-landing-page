@@ -1,0 +1,22 @@
+---
+interface Props {
+    title? : string;
+    viewMore? : string;
+    preffix? : string;
+    lang? : string
+}
+const { title = 'Default title', viewMore = 'View more', preffix = '', lang = 'en' } = Astro.props;
+import Card from '../components/Card.astro';
+const posts = (lang == 'es') ? await Astro.glob('../pages/es/blog/posts/*.md') : await Astro.glob('../pages/blog/posts/*.md');
+---
+<section class="bg-ciblue p-11">
+    <div class="text-center text-white">{title}</div>
+    <h3 class="text-4xl text-white text-center mb-4">BLOG</h3>
+    <div class="home-entries flex gap-3 row items-center justify-center">
+        {
+            posts.map(i => {
+                return <Card title={i.frontmatter.title} viewMore={viewMore} preffix={preffix} url={i.url} />;
+            })
+        }
+    </div>
+</section>

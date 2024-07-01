@@ -1,0 +1,18 @@
+---
+import Layout from "../../components/Layout.astro";
+import AboutHero from '../../components/AboutHero.astro';
+import AboutServices from '../../components/AboutServices.astro';
+
+const currentLang = 'es';
+---
+<Layout 
+pageTitle="Sobre nosotros"
+pageDescription="Descubre los servicios de desarrollo de software que ofrece ATSYS, una empresa especializada en soluciones web y móviles. Desde el diseño hasta la implementación, nuestro equipo de expertos en desarrollo de software está aquí para ayudarte a llevar tu proyecto al siguiente nivel. ¡Contáctanos hoy para obtener más información!"
+lang={currentLang}
+>
+    <AboutHero 
+        title="Tu y nosotros|el equipo perfecto"
+        content="Nos impulsa una pasión inquebrantable por crear soluciones web y móviles personalizadas que trasciendan la mera funcionalidad, infundiendo a cada línea de código un profundo toque humano. Nuestra incesante búsqueda de la excelencia está impulsada por una profunda comprensión de las aspiraciones únicas de nuestros clientes, lo que nos permite crear experiencias digitales que resuenan a nivel emocional."
+    />
+    <AboutServices lang={currentLang} />
+</Layout>

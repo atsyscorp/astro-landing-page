@@ -1,0 +1,24 @@
+---
+import Layout from '../../components/Layout.astro';
+const currentLang = "es";
+---
+<Layout
+  pageTitle="Políticas - ATSYS"
+  pageDescription="Descubre las políticas de nuestra página web ATSYS, dirigidas a manejo de datos, privacidad en el sitio web y calidad. ¡Entra y conócelos!"
+  lang={currentLang}
+>
+<div class="container">
+    <div class="blog-header bg-black flex flex-col content-center justify-center h-[250px]">
+        <h1 class="pt-11 text-white text-center text-5xl">Políticas de sitio</h1>
+    </div>
+    <div class="bg-ciblue py-11 px-40 text-white">
+        <p class="mb-5">En ATSYS nos tomamos muy en serio las políticas las cuales puedes consultar aquí para que la experiencia tanto en la navegación como en la prestación de servicios sea la apropiada.</p>
+
+        <ul>
+            <li><a href="/es/politica-de-privacidad">Política de privacidad</a></li>
+            <li><a href="/es/politica-de-tratamiento-de-datos">Política de tratamiento de datos</a></li>
+            <li><a href="/es/politica-de-calidad">Política de calidad</a></li>
+        </ul>
+    </div>
+</div>
+</Layout>

@@ -1,16 +1,36 @@
 ---
+import Layout from "../components/Layout.astro";
+import HomeHero from "../components/HomeHero.astro";
+import HomeConsultancy from "../components/HomeConsultancy.astro";
+import HomeCustomers from "../components/HomeCustomers.astro";
 
+const currentLang = 'en';
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout
+pageTitle="ATSYS - Software dvelopment company"
+pageDescription="Looking for a top software development company? Look no further than ATSYS! We specialize in web and mobile development, creating innovative software solutions for businesses of all sizes. Contact us today to see how we can help your company thrive in the digital world."
+lang={currentLang}
+>
+  <HomeHero
+    title="We're architects of software at measurement."
+    textsList="Innovator and Creative,Effective and efficient,Fast and effortless"
+  />
+  <HomeConsultancy
+    title="Consultancy"
+    content="With us your business can articulate your responses for your customers.<br /><br />We specializaed in creating online apps for business."
+  />
+  <HomeCustomers 
+    title="Our satisfied"
+    customers="CUSTOMERS"
+  />
+  {
+    /*
+    <HomeBlog
+      title="Our news"
+      viewMore="View more"
+      preffix={currentLang == 'es' ? '/es' : ''}
+      lang={currentLang}
+    />
+    */
+  }
+</Layout>

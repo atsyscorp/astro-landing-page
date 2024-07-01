@@ -1,0 +1,249 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../images/logo.svg';
+import MainMenu from './MainMenu.astro';
+
+interface Props {
+    pageTitle? : string;
+    pageDescription? : string;
+    lang? : string;
+}
+const {pageTitle = 'ATSYS', pageDescription = '', lang = 'en'} = Astro.props
+const currentYear = new Date().getFullYear();
+
+const navLinks = [{
+    "en" : [
+        {
+            label: 'Home',
+            href: '/',
+            isBlank : false
+        },
+        {
+            label: 'About us',
+            href: '/about-us',
+            isBlank : false
+        },
+        {
+            label: 'Contact',
+            href: 'https://awb3ihv63a2.typeform.com/to/V1KTjVUm',
+            isBlank : true
+        }
+    ],
+    "es" : [
+        {
+            label: 'Inicio',
+            href: '/es',
+            isBlank : false
+        },
+        {
+            label: 'Nosotros',
+            href: '/es/nosotros',
+            isBlank : false
+        },
+        {
+            label: 'Contacto',
+            href: 'https://awb3ihv63a2.typeform.com/to/N1a3vHQt',
+            isBlank : true
+        }
+    ]
+}];
+const footerLinks = [{
+    "en" : [
+        {
+            label : "About us",
+            href : '/about-us'
+        },
+        {
+            label : 'Our clients',
+            href : '/clients'
+        },
+        {
+            label : 'Contact',
+            href : 'https://awb3ihv63a2.typeform.com/to/V1KTjVUm'
+        }
+    ],
+    "es" : [
+        {
+            label : "Nosotros",
+            href : '/es/nosotros'
+        },
+        {
+            label : 'Nuestros clientes',
+            href : '/es/clientes'
+        },
+        {
+            label : 'Contacto',
+            href : 'https://awb3ihv63a2.typeform.com/to/N1a3vHQt'
+        }
+    ]
+}];
+const footerLinks2 = [{
+    "en" : [
+        {
+            label : "Terms and Conditions",
+            href : '/terms-and-conditions'
+        },
+        {
+            label : 'Policies',
+            href : '/policies'
+        },
+        {
+            label : 'Client area',
+            href : 'https://clientarea.atsys.co'
+        }
+    ],
+    "es" : [
+        {
+            label : "Términos y condiciones",
+            href : '/es/terminos-y-condiciones'
+        },
+        {
+            label : 'Políticas',
+            href : '/es/politicas'
+        },
+        {
+            label : 'Client area',
+            href : 'https://clientarea.atsys.co/es',
+            openInNewWindow : true
+        }
+    ]
+}];
+---
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content={pageDescription}>
+    <title>{pageTitle}</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js" is:inline></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.6.1/lodash.min.js" is:inline></script>
+</head>
+<body class="flex-column min-h-full bg-ciblue">
+    <header class="at-header fixed flex flex-row justify-between m-auto w-full p-6 md:transition-all delay-500">
+        <a href={lang == 'es' ? "/es" : "/"}><Image src={logo} width="100" alt="" /></a>
+        <div>
+            <button class="relative group menu-opener">
+                <div class="button-wipe">
+                    <div class="button-wiped"></div>
+                </div>
+                <span>
+                    {
+                        lang == 'es' ? 'Menú' : 'Menu'
+                    }
+                </span>
+            </button>
+            <script define:vars={{lang}} is:inline>
+                const button = document.querySelector(".menu-opener");
+                let isOpenButton = false;
+                button.addEventListener('click', () => {
+
+                    var menu = document.querySelector('.main-menu');
+                    let items = menu.querySelectorAll('.nav-inner > .nav-items > span');
+                    let itemsSocial = menu.querySelectorAll('.nav-inner > .nav-blocks > .nav-item > .nav-links > *');
+
+                    if(!isOpenButton) {
+                        items.forEach(item => {
+                            item.querySelector('.nav-item').querySelector('.nav-item-cont > span').style = 'opacity: 0; transform: translateY(60%) translateZ(0px);';
+                        });
+                        itemsSocial.forEach(item => {
+                            item.style = 'opacity: 0; transform: translateY(60%) translateZ(0px);';
+                        });
+                    } else {
+                        items.forEach(item => {
+                            setTimeout(() => {
+                                item.querySelector('.nav-item').querySelector('.nav-item-cont > span').style = 'opacity: 0; transform: translateY(60%) translateZ(0px);';
+                            }, Array.from(items).indexOf(item) * 100);
+                        });
+                        itemsSocial.forEach(item => {
+                            setTimeout(() => {
+                                item.style = 'opacity: 0; transform: translateY(60%) translateZ(0px);';
+                            }, Array.from(itemsSocial).indexOf(item) * 100);
+                        });
+                    }
+
+                    setTimeout(() => {
+                        menu.classList.toggle('is-open');
+                        document.documentElement.classList.toggle('movis-stop');
+                        isOpenButton = !isOpenButton;
+                        button.querySelector('span').innerHTML = (isOpenButton) ? (lang == 'es' ? 'Cerrar menú' : 'Close menu') : (lang == 'es' ? 'Menú' : 'Menu');
+
+                        if(isOpenButton) {
+                            setTimeout(() => {
+                                items.forEach(item => {
+                                    setTimeout(() => {
+                                        item.querySelector('.nav-item').querySelector('.nav-item-cont > span').style = 'opacity: 1; transform: translateY(0%) translateZ(0px);';
+                                    }, Array.from(items).indexOf(item) * 100);
+                                });
+                                itemsSocial.forEach(item => {
+                                    setTimeout(() => {
+                                        item.style = 'opacity: 1; transform: translateY(0%) translateZ(0px);';
+                                    }, Array.from(itemsSocial).indexOf(item) * 100);
+                                });
+                            },1000);
+                        }
+                    },isOpenButton ? 700 : 200);
+                });
+            </script>
+        </div>
+    </header>
+    <MainMenu 
+        navLinks={navLinks[0][lang]}
+        linksText={lang=='es' ? 'Enlaces' : 'Links'}
+    />
+    <slot />
+    <script>
+
+        /*
+        let lastScrollTop = 0;
+        const header = document.getElementsByTagName('header')[0];
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > lastScrollTop) {
+                // Scrolling down
+                header.style.top = '-100px'; // Ocultar el header
+            } else {
+                // Scrolling up
+                header.style.top = '0'; // Mostrar el header
+            }
+
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+        });
+        */
+    </script>
+    <footer class="bg-black lg:pt-25 md:pt-[60px] pt-[30px]">
+        <div class="container m-auto px-6 py-2">
+            <div class="pb-4">
+                <ul class="flex flex-row flex-wrap m-auto justify-center">
+                    {
+                        footerLinks[0][lang].map(link => {
+                            return (
+                                <li>
+                                    <a href={link.href} class="text-white p-2">{link.label}</a>
+                                </li>
+                            )
+                        })
+                    }
+                </ul>
+            </div>
+            <div class="text-center text-white pb-4">
+                &copy; {currentYear} Arkitech Systems SAS &nbsp;- 
+                <span>
+                    {
+                        footerLinks2[0][lang].map((link: { href: string, label: string, openInNewWindow?: boolean }) => {
+                            return (
+                                <a href={link.href} target={link.openInNewWindow ? '_blank' : '_self'} class="text-white p-1">{link.label}</a>
+                            )
+                        })
+                    }
+                </span>
+                <div>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

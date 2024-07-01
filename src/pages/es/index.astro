@@ -1,0 +1,36 @@
+---
+import Layout from "../../components/Layout.astro";
+import HomeHero from "../../components/HomeHero.astro";
+import HomeConsultancy from "../../components/HomeConsultancy.astro";
+import HomeCustomers from "../../components/HomeCustomers.astro";
+
+const currentLang = 'es';
+---
+<Layout
+pageTitle="ATSYS - Empresa de desarrollo de software"
+pageDescription="¿Está buscando una empresa de desarrollo de software líder? ¡No busque más! ¡ATSYS es su solución! Nos especializamos en desarrollo web y móvil, creando soluciones de software innovadoras para empresas de todos los tamaños. Contáctenos hoy para ver cómo podemos ayudar a su empresa a prosperar en el mundo digital."
+lang={currentLang}
+>
+    <HomeHero
+        title="Somos arquitectos de software a la medida."
+        textsList="Innovador y Creativo,Efectivo y Eficiente,Rápido y sin esfuerzo"
+    />
+    <HomeConsultancy
+        title="Consultoría"
+        content="Con nosotros su empresa puede articular sus respuestas para sus clientes.<br /><br />Nos especializamos en la creación de aplicaciones en línea para empresas."
+    />
+    <HomeCustomers 
+        title="Nuestros satisfechos"
+        customers="CLIENTES"
+    />
+    {
+        /*
+        <HomeBlog
+            title="Nuestras novedades"
+            viewMore="Ver más"
+            preffix={currentLang == 'es' ? '/es' : ''}
+            lang={currentLang}
+        />
+        */
+    }
+</Layout>
