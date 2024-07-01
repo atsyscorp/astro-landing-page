@@ -10,7 +10,7 @@ import netlify from "@astrojs/netlify";
 export default defineConfig({
   prefetch: true,
   site: 'https://atsys.co',
-  output: 'server',
+  output: 'static',
   integrations: [tailwind(), react(), sitemap(), rename()],
   adapter: netlify()
 });
