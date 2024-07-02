@@ -102,14 +102,14 @@ const services = {
 
 }
 ---
-<section class="py-11 px-30 bg-black text-white flex flex-col w-full gap-11 about-service-block">
-    <h2 class="text-center text-4xl mb-5">{lang == 'es' ? '¿Qué hacemos?' : 'What we do?'}</h2>
+<section class="py-11 md:px-30 px-5 bg-black text-white flex flex-col w-full gap-11 about-service-block">
+    <h2 class="text-center md:text-4xl text-2xl mb-5">{lang == 'es' ? '¿Qué hacemos?' : 'What we do?'}</h2>
     <div class="flex flex-wrap flex-row gap-11">
         {
             services[lang].map((i: { bgClass: string, title: string, description: string, features: string[] }) => (
-                <div class={['h-max', 'rounded-2xl', 'px-18 py-11', 'flex-1', 'h-max', i.bgClass].join(' ')}>
+                <div class={['h-max', 'rounded-2xl', 'md:px-18','px-11','py-11', 'flex-1', 'h-max', i.bgClass].join(' ')}>
                     <div class="flex flex-col gap-5">
-                        <div class="service-title text-5xl"><p>{i.title}</p></div>
+                        <div class="service-title md:text-5xl text-2xl"><p>{i.title}</p></div>
                         <div class="service-description">{i.description}</div>
                         <div class="service-features">
                             {

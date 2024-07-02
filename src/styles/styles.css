@@ -2,8 +2,9 @@
   --idle-color:#989898;
 }
 
+
 .at-home-symbol{
-  width:500px;
+  width:80%;
   height:100vh;
   margin:0 auto;
   opacity:0.1;
@@ -30,12 +31,16 @@
   right:0;
   bottom:0;
 }
+@media(min-width:900px) {
+  .at-home-symbol{
+    width:500px;
+  }
+}
 .about-at-symbol{ position:absolute; right:0; bottom:0; transition:200ms all; opacity:0.1; }
 
 .bg-hero{
   background: linear-gradient(266deg, #000000, #11263B);
   background-size: 400% 400%;
-
   -webkit-animation: hero 15s ease infinite;
   -moz-animation: hero 15s ease infinite;
   animation: hero 15s ease infinite;
@@ -201,7 +206,7 @@ padding-left:8.54vw;
   width: fit-content;
   margin: 0;
   font-size: calc(25px + 75 * ((100vw - 320px) / 1080));
-  width:50%;
+  width:100%;
 }
 .main-menu .nav-inner .nav-items .nav-item{
   color: var(--idle-color);
@@ -317,7 +322,7 @@ padding-left:8.54vw;
 .home-services{
   list-style:none;
   display:flex;
-  flex-direction:row;
+  flex-direction:column;
   gap:5px;
 }
 .home-services li{
@@ -333,7 +338,7 @@ padding-left:8.54vw;
   align-items:flex-end;
   justify-content:flex-end;
   height:160px;
-  padding:10px 5px;
+  padding:10px 35px;
   font-size:28px;
 }
 .home-services li:hover{
@@ -341,6 +346,12 @@ padding-left:8.54vw;
 }
 
 @media(min-width: 754px) {
+  .main-menu .nav-inner .nav-items{
+    width:50%;
+  }
+  .home-services{
+    flex-direction:column;
+  }
   .home-about-video{
     background-size:cover;
     min-height:400px;

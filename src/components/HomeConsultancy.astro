@@ -6,12 +6,12 @@ interface Props {
 }
 const { title = 'Default', content = 'Default' } = Astro.props;
 ---
-<section class="text-white flex flex-row gap-0 h-screen">
-    <div class="col md:w-1/2 w-full px-20 bg-black flex md:flex-row flex-column content-center items-center h-screen">
+<section class="text-white flex md:flex-row flex-col gap-0 h-screen">
+    <div class="col lg:w-1/2 md:w w-full  lg:px-20 px-11 pt-11 bg-black flex md:flex-row flex-column content-center items-center h-screen">
         <div>
             <h2 class="text-4xl mb-6">{title}</h2>
             <div set:html={content} class="text-2xl"></div>
-            <div class="pt-11">
+            <div class="md:pt-11 pt-3">
                 <ul class="home-services">
                     <li><span>UI/UX</span></li>
                     <li><span>SEO</span></li>
@@ -20,7 +20,7 @@ const { title = 'Default', content = 'Default' } = Astro.props;
             </div>
         </div>
     </div>
-    <div class="col w-1/2 home-about-video">
+    <div class="col lg:w-1/2 w-full md:block hidden home-about-video">
         <div>
             <video autoplay loop muted>
                 <source src="/assets/atsys-home-about-us.mp4" type="video/mp4">
