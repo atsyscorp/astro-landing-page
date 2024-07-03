@@ -9,6 +9,13 @@ export default defineConfig({
   prefetch: true,
   site: 'https://atsys.co',
   output: 'static',
-  integrations: [tailwind(), react(), sitemap()],
+  integrations: [tailwind(), react(), sitemap({
+    i18n: {
+      defaultLocale: 'en',
+      locales: {
+        es: 'es'
+      },
+    },
+  })],
   adapter: netlify()
 });
