@@ -10,7 +10,7 @@ const { title = 'Default', content = 'Default' } = Astro.props;
     <div class="col lg:w-1/2 md:w w-full  lg:px-20 px-11 pt-11 bg-black flex md:flex-row flex-column content-center items-center h-screen">
         <div>
             <h2 class="text-4xl mb-6">{title}</h2>
-            <div set:html={content} class="text-2xl"></div>
+            <div set:html={content} class="text-1xl md:text-2xl"></div>
             <div class="md:pt-11 pt-3">
                 <ul class="home-services">
                     <li><span>UI/UX</span></li>
