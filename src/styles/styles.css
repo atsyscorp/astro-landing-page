@@ -31,9 +31,25 @@
   right:0;
   bottom:0;
 }
+.main-menu .nav-inner .nav-items .nav-item .nav-item-cont .nav-item-arrow svg{
+  transition:500ms all;
+  opacity:0;
+  fill:#FFFFFF;
+  width:24px;
+  height:24px;
+}
+.main-menu .nav-inner .nav-items .nav-item:hover .nav-item-cont .nav-item-arrow svg{
+  opacity:1;
+  transform: translateX(-20px);
+  filter: contrast(0) sepia(100%) hue-rotate(116deg) brightness(1.4) saturate(0.28);
+}
 @media(min-width:900px) {
   .at-home-symbol{
     width:500px;
+  }
+  .main-menu .nav-inner .nav-items .nav-item .nav-item-cont .nav-item-arrow svg{
+    width:80px;
+    height:80px;
   }
 }
 .about-at-symbol{ position:absolute; right:0; bottom:0; transition:200ms all; opacity:0.1; }
@@ -236,18 +252,7 @@ padding-left:8.54vw;
   align-items: center;
   margin-left: 20px;
 }
-.main-menu .nav-inner .nav-items .nav-item .nav-item-cont .nav-item-arrow svg{
-  transition:500ms all;
-  opacity:0;
-  fill:#FFFFFF;
-  width:80px;
-  height:80px;
-}
-.main-menu .nav-inner .nav-items .nav-item:hover .nav-item-cont .nav-item-arrow svg{
-  opacity:1;
-  transform: translateX(-20px);
-  filter: contrast(0) sepia(100%) hue-rotate(116deg) brightness(1.4) saturate(0.28);
-}
+
 
 .main-menu .nav-inner .nav-blocks{
   display: flex;
