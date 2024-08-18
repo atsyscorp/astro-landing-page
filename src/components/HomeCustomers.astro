@@ -5,11 +5,44 @@ interface Props {
 }
 const { title = 'Default', customers = 'Default' } = Astro.props;
 import HomeCustomerSlider from './HomeCustomerSlider.jsx';
+import { Image } from 'astro:assets';
+import alcaldia from "../images/atsys-customer-alcaldia-bogota.png";
+import bolivar from "../images/atsys-customer-bolivar.png";
+import davivienda from "../images/atsys-customer-davivienda.png";
+import emermedica from "../images/atsys-customer-emermedica.png";
+import compartir from "../images/atsys-customer-fundacion-compartir.png";
+import mininterior from "../images/atsys-customer-mininterior.png";
+import rivertech from "../images/atsys-customer-rivertech.png";
+import soenergy from "../images/atsys-customer-soenergy.png";
+import terpel from "../images/atsys-customer-terpel.png";
+import ultratug from "../images/atsys-customer-ultratug.png";
+import spot from "../images/atsys-customer-spot.png";
+import unopublicidad from "../images/atsys-customer-1publicidad.png";
+
+const images = [
+    alcaldia,
+    bolivar,
+    davivienda,
+    emermedica,
+    compartir,
+    mininterior,
+    rivertech,
+    soenergy,
+    terpel,
+    ultratug,
+    spot,
+    unopublicidad
+];
+images.sort(() => Math.random() - 0.5);
 ---
 <section class="bg-black py-20">
     <div class="text-white text-center">{title}</div>
     <h3 class="text-4xl text-white text-center mb-4">{customers}</h3>
-    <div class="container m-auto pt-11">
-        <HomeCustomerSlider client:only="react" />
+    <div class="container m-auto pt-11 columns-2 md:columns-6">
+        {
+            images.map((image, index) => (
+                <Image src={image} alt="" class="hover:scale-110 transition-transform duration-500 ease-in-out" />
+            ))
+        }
     </div>
 </section>
